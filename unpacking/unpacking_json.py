@@ -15,3 +15,16 @@ def unpacking_file(file_json):
         questions.append(question)
 
     return questions
+
+
+def statistic(questions):
+    balls = 0
+    answers_on_questions = 0
+    total_questions = 0
+    for question in questions:
+        total_questions += 1
+        if question.is_correct():
+            answers_on_questions += 1
+            balls += question.get_points()
+
+    print(f'\nВот и всё!\nОтвечено {answers_on_questions} вопроса из {total_questions}\nНабрано баллов: {balls}')
