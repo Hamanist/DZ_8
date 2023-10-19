@@ -5,7 +5,7 @@ class Question:
         self.correct_answer = correct_answer
         self.question_asked = False  # задан ли вопрос
         self.user_response = None  # ответ пользователя
-        self.points_question = self.complexity * 10  # баллы за вопрос
+        self.points_question = int(self.complexity) * 10  # баллы за вопрос
 
     def get_points(self):
         """Возвращает int, количество баллов.
@@ -28,18 +28,10 @@ class Question:
         """
         return f"Вопрос: {self.question_text}\nСложность {self.complexity}/5"
 
-    def build_positive_feedback(self):
+    def build_feedback(self):
         """Возвращает:
         Ответ верный, получено __ баллов
         """
-        if self.correct_answer == self.user_response:
+        if self.is_correct():
             return f"Ответ верный, получено {self.points_question} баллов"
         return f"Ответ неверный, верный ответ {self.correct_answer}"
-
-    # def build_negative_feedback(self): ...
-    #
-    # """Возвращает :
-    # Ответ неверный, верный ответ __
-    # """
-
-    # *Вы также можете совместить последние два метода
